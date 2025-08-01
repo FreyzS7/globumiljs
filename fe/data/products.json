@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "id_produk": "18",
+      "nama_produk": "Globumil - 3Pcs",
+      "deskripsi": "GLOBUMIL Pregnancy Supplement adalah suplemen yang dirancang khusus untuk ibu hamil, mengandung multivitamin dan mineral penting yang mendukung kesehatan ibu dan janin selama kehamilan. Setiap kapsul GLOBUMIL mengandung berbagai nutrisi penting seperti Folic Acid, Calcium, Iron, Iodin, Vitamin B, Vitamin C, Vitamin D3, Zinc, Biotin, dan DHA, yang semuanya berperan penting dalam mendukung perkembangan janin dan kesehatan ibu hamil.",
+      "harga_produk": "600000",
+      "link_produk": "https://shopee.co.id/Globumil-Pregnancy-Supplement---Multivitamin-Terbaik-Untuk-Ibu-Hamil---Suplemen%2FDHA%2FAsam-Folat%2FMultivitamin-i.923771857.28910791991",
+      "gambar": "globumil3pcs.png"
+    },
+    {
+      "id_produk": "17",
+      "nama_produk": "Globumil - 2Pcs",
+      "deskripsi": "GLOBUMIL Pregnancy Supplement adalah suplemen yang dirancang khusus untuk ibu hamil, mengandung multivitamin dan mineral penting yang mendukung kesehatan ibu dan janin selama kehamilan. Setiap kapsul GLOBUMIL mengandung berbagai nutrisi penting seperti Folic Acid, Calcium, Iron, Iodin, Vitamin B, Vitamin C, Vitamin D3, Zinc, Biotin, dan DHA, yang semuanya berperan penting dalam mendukung perkembangan janin dan kesehatan ibu hamil.",
+      "harga_produk": "400000",
+      "link_produk": "https://shopee.co.id/Globumil-Pregnancy-Supplement---Multivitamin-Terbaik-Untuk-Ibu-Hamil---Suplemen%2FDHA%2FAsam-Folat%2FMultivitamin-i.923771857.28910791991",
+      "gambar": "globumil2pcs.png"
+    },
+    {
+      "id_produk": "16",
+      "nama_produk": "Globumil - 1Pcs",
+      "deskripsi": "GLOBUMIL Pregnancy Supplement adalah suplemen yang dirancang khusus untuk ibu hamil, mengandung multivitamin dan mineral penting yang mendukung kesehatan ibu dan janin selama kehamilan. Setiap kapsul GLOBUMIL mengandung berbagai nutrisi penting seperti Folic Acid, Calcium, Iron, Iodin, Vitamin B, Vitamin C, Vitamin D3, Zinc, Biotin, dan DHA, yang semuanya berperan penting dalam mendukung perkembangan janin dan kesehatan ibu hamil.",
+      "harga_produk": "119000",
+      "link_produk": "https://shopee.co.id/Globumil-Pregnancy-Supplement---Multivitamin-Terbaik-Untuk-Ibu-Hamil---Suplemen%2FDHA%2FAsam-Folat%2FMultivitamin-i.923771857.28910791991",
+      "gambar": "globumil1pcs.png"
+    }
+  ],
+  "total": 3,
+  "page": 1,
+  "limit": 3,
+  "total_pages": 1
+}

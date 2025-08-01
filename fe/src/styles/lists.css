@@ -1,0 +1,100 @@
+/* Basic list styles */
+ul, ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Unordered list styles */
+ul {
+  list-style-type: disc;
+}
+
+ul ul {
+  list-style-type: circle;
+}
+
+ul ul ul {
+  list-style-type: square;
+}
+
+/* Ordered list styles */
+ol {
+  list-style-type: decimal;
+}
+
+ol ol {
+  list-style-type: lower-alpha;
+}
+
+ol ol ol {
+  list-style-type: lower-roman;
+}
+
+/* List with no bullets */
+.list-none {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* List with custom bullet points */
+.list-custom {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-custom li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.list-custom li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #FFD1DA; /* Using your theme color */
+}
+
+/* List with icons */
+.list-icon {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-icon li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* List with numbers */
+.list-numbered {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: item;
+}
+
+.list-numbered li {
+  counter-increment: item;
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.list-numbered li::before {
+  content: counter(item);
+  position: absolute;
+  left: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  background: #FFD1DA;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+} 
