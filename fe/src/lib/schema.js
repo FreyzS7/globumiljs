@@ -127,11 +127,46 @@ export const generateProductSchema = (product) => {
       "@type": "Offer",
       "url": `${METADATA_BASE_URL}/produk_kami/tampil_produk/${product.id_produk}/${product.slug || product.nama_produk.replace(/\s+/g, '-').toLowerCase()}`,
       "priceCurrency": "IDR",
-      "price": product.harga || "1",
+      "price": product.harga || "85000",
       "availability": "https://schema.org/InStock",
       "seller": {
         "@type": "Organization",
         "name": "Globumil"
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "15000",
+          "currency": "IDR"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "ID"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 2,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 2,
+            "maxValue": 7,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "ID",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 7,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
       }
     },
     "aggregateRating": {
