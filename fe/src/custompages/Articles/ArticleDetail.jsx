@@ -60,39 +60,47 @@ export default function ArticleDetail() {
   const { judul, gambar, kata_awal, tanggal_input, nama_kategori, isi_artikel, admin } = articleData.data;
   
   return (
-    <div className='w-full h-auto flex items-center justify-center flex-col pb-[60px]'>
+    <main className='w-full h-auto flex items-center justify-center flex-col pb-[60px]'>
       <article className="w-[90%] mx-auto py-5">
-        <div className="space-y-1 flex flex-col items-center justify-center">
+        <header className="space-y-1 flex flex-col items-center justify-center">
           <h1 className="w-[80%] text-3xl text-center font-bold text-gray-900">{judul}</h1>
           <div className="flex items-center gap-1 text-sm text-black font-semibold pb-7">
             <span className="text-primary-600">{nama_kategori}</span>
             <span>||</span>
             <span>{admin}</span>
             <span>||</span>
-            <span>{new Date(tanggal_input).toLocaleDateString()}</span>
+            <time dateTime={tanggal_input}>{new Date(tanggal_input).toLocaleDateString()}</time>
             <span>||</span>
             <span className="flex items-center gap-1">
-              <i className="bi bi-eye"></i>
+              <i className="bi bi-eye" aria-hidden="true"></i>
               {viewCount} views
             </span>
           </div>
-          <div 
+        </header>
+        <div className="flex flex-col items-center justify-center">
+          <section 
             className="prose prose-lg max-w-none"
             dangerouslySetInnerHTML={{ __html: kata_awal }}
           />
-          <img
-            src={`${UPLOADS_URL}${gambar}`}
-            alt={judul}
-            className="w-129 h-96 object-cover rounded-lg mb-8"
-          />
-          <div 
+          <figure className="mb-8">
+            <img
+              src={`${UPLOADS_URL}${gambar}`}
+              alt={judul}
+              className="w-129 h-96 object-cover rounded-lg"
+            />
+          </figure>
+          <section 
             className="prose prose-lg max-w-none"
             dangerouslySetInnerHTML={{ __html: isi_artikel }}
           />
         </div>
       </article>
-      <ArtikelChannamixSection title="Artikel Lainnya" description="" />
-      <Comment Id={id} type="article" />
-    </div>
+      <aside>
+        <ArtikelChannamixSection title="Artikel Lainnya" description="" />
+      </aside>
+      <section>
+        <Comment Id={id} type="article" />
+      </section>
+    </main>
   );
 } 

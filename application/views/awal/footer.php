@@ -11,60 +11,64 @@
 
 
 
-          <div class="col-lg-4 col-md-6 footer-contact">
+          <section class="col-lg-4 col-md-6 footer-contact">
 
             <h3>Globumil</h3>
 
-            <p style="color:white;">
+            <address style="color:white;">
 
               <strong>Phone:</strong> <br>
 
               <strong>Email:</strong> <br>
 
-            </p>
+            </address>
 
-          </div>
+          </section>
 
 
 
-          <div class="col-lg-4 col-md-6 footer-links">
+          <nav class="col-lg-4 col-md-6 footer-links" aria-label="Footer navigation">
 
-            <h4>Useful Links</h4>
+            <h4>Link Berguna</h4>
 
             <ul>
 
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right" aria-hidden="true"></i> <a href="<?= site_url('/') ?>">Beranda</a></li>
 
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Tentang Kami</a></li>
+              <li><i class="bx bx-chevron-right" aria-hidden="true"></i> <a href="<?= site_url('tentang_kami') ?>">Tentang Kami</a></li>
 
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Produk</a></li>
+              <li><i class="bx bx-chevron-right" aria-hidden="true"></i> <a href="<?= site_url('produk_kami') ?>">Produk</a></li>
 
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Halal & BPOM</a></li>
+              <li><i class="bx bx-chevron-right" aria-hidden="true"></i> <a href="#">Halal & BPOM</a></li>
 
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Bunda & Sikecil </a></li>
+              <li><i class="bx bx-chevron-right" aria-hidden="true"></i> <a href="<?= site_url('artikel') ?>">Artikel</a></li>
 
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Event Kami</a></li>
+              <li><i class="bx bx-chevron-right" aria-hidden="true"></i> <a href="#">Event Kami</a></li>
 
             </ul>
 
-          </div>
+          </nav>
 
 
 
 
-          <div class="col-lg-4 col-md-6 footer-newsletter">
+          <section class="col-lg-4 col-md-6 footer-newsletter">
 
-            <h4></h4>
+            <h4>Newsletter</h4>
 
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <p>Dapatkan update terbaru tentang produk dan artikel kesehatan kehamilan</p>
 
-            <form action="" method="post">
+            <form action="" method="post" aria-label="Newsletter subscription">
 
-              <input type="email" name="email"><input type="submit" value="Subscribe" style="background-color:#c82a87">
+              <label for="newsletterEmail" class="sr-only">Email untuk newsletter</label>
+
+              <input type="email" id="newsletterEmail" name="email" placeholder="Email Anda" required>
+
+              <input type="submit" value="Berlangganan" style="background-color:#c82a87">
 
             </form>
 
-          </div>
+          </section>
 
 
 
@@ -104,19 +108,19 @@
 
       </div>
 
-      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+      <nav class="social-links text-center text-md-right pt-3 pt-md-0" aria-label="Social media links">
 
-        <a href="#" class="twitter" style="background-color: white;"><i class="bx bxl-twitter" style="color: #c82a87;"></i></a>
+        <a href="#" class="twitter" style="background-color: white;" aria-label="Follow us on Twitter"><i class="bx bxl-twitter" style="color: #c82a87;" aria-hidden="true"></i></a>
 
-        <a href="#" class="facebook" style="background-color: white;"><i class="bx bxl-facebook" style="color: #c82a87;"></i></a>
+        <a href="#" class="facebook" style="background-color: white;" aria-label="Follow us on Facebook"><i class="bx bxl-facebook" style="color: #c82a87;" aria-hidden="true"></i></a>
 
-        <a href="#" class="instagram" style="background-color: white;"><i class="bx bxl-instagram" style="color: #c82a87;"></i></a>
+        <a href="#" class="instagram" style="background-color: white;" aria-label="Follow us on Instagram"><i class="bx bxl-instagram" style="color: #c82a87;" aria-hidden="true"></i></a>
 
-        <a href="#" class="google-plus" style="background-color: white;"><i class="bx bxl-skype" style="color: #c82a87;"></i></a>
+        <a href="#" class="google-plus" style="background-color: white;" aria-label="Contact us on Skype"><i class="bx bxl-skype" style="color: #c82a87;" aria-hidden="true"></i></a>
 
-        <a href="#" class="linkedin" style="background-color: white;"><i class="bx bxl-linkedin" style="color: #c82a87;"></i></a>
+        <a href="#" class="linkedin" style="background-color: white;" aria-label="Connect with us on LinkedIn"><i class="bx bxl-linkedin" style="color: #c82a87;" aria-hidden="true"></i></a>
 
-      </div>
+      </nav>
 
     </div>
 

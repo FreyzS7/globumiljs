@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'; 
+import Script from 'next/script';
 
 import { articleService } from '../../services/api';
-import { ARTICLE_URL, UPLOADS_URL, VIEW_ARTICLE_URL } from '../../utils/constant';
+import { ARTICLE_URL, UPLOADS_URL, VIEW_ARTICLE_URL, METADATA_BASE_URL } from '../../utils/constant';
+import { generateCollectionPageSchema, generateBreadcrumbSchema } from '../../lib/schema';
 import Typography from '@mui/material/Typography';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
@@ -62,13 +64,26 @@ export default function Articles() {
   const handleChange = (event, value) => {
     router.push(`/${ARTICLE_URL}${value}`);
   };
+
+  // Generate schema for articles listing page
+  const collectionSchema = generateCollectionPageSchema('articles', articles, page);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    {
+      name: "Beranda",
+      url: METADATA_BASE_URL
+    },
+    {
+      name: "Artikel",
+      url: `${METADATA_BASE_URL}/artikel${page > 1 ? `/${page}` : ''}`
+    }
+  ]);
    
   return (
-
-    <div className="w-full flex flex-col items-center justify-center">
+    <>
+      <main className="w-full flex flex-col items-center justify-center">
       
-      <div className="flex justify-center items-center w-full mb-10">
-        <div className="relative w-full max-w-[50%] mx-auto rounded-[2rem] overflow-hidden bg-[#FFF6F8]">
+      <section className="flex justify-center items-center w-full mb-10" aria-label="Featured Article">
+        <article className="relative w-full max-w-[50%] mx-auto rounded-[2rem] overflow-hidden bg-[#FFF6F8]">
           {mostViewedLoading ? (
             <div className="flex items-center justify-center h-[300px] bg-gray-100">Loading...</div>
           ) : mostViewed ? (
@@ -80,9 +95,9 @@ export default function Articles() {
               />
               <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
                 <div>
-                  <p className="text-white text-sm md:text-lg font-medium mb-4 drop-shadow md:w-[70%] ">
+                  <h2 className="text-white text-sm md:text-lg font-medium mb-4 drop-shadow md:w-[70%] ">
                     {mostViewed.judul}
-                  </p>
+                  </h2>
                   <Link href={`${VIEW_ARTICLE_URL}${mostViewed.id_artikel}/${formatUrlTitle(mostViewed.judul)}`}
                    style={{color: 'black'}} className="inline-block px-6 py-2 rounded-lg bg-[#FFD1DA] text-black font-bold text-base shadow hover:bg-[#ffb6c1] transition"
                   >
@@ -96,15 +111,15 @@ export default function Articles() {
               No popular article found.
             </div>
           )}
-        </div>
-      </div>
+        </article>
+      </section>
       <h1 className="text-3xl font-semibold text-gray-900 text-center pb-10">Artikel</h1>
-      <div className="flex flex-wrap gap-4 justify-center items-center">
+      <section className="flex flex-wrap gap-4 justify-center items-center" aria-label="Articles List">
         {articlesLoading ? (
           <div className="text-center py-12">Loading...</div>
         ) : articles.length > 0 ? (
           articles.map((article) => (
-            <div key={article.id_artikel} className="h-[300px] w-[350px] flex flex-col items-center bg-transparent">
+            <article key={article.id_artikel} className="h-[300px] w-[350px] flex flex-col items-center bg-transparent">
               <Link href={`${VIEW_ARTICLE_URL}${article.id_artikel}/${formatUrlTitle(article.judul)}`}>
                 <img
                   src={`${UPLOADS_URL}${article.gambar}`}
@@ -116,17 +131,32 @@ export default function Articles() {
                   {article.judul}
                 </h3>
               </Link>
-            </div>
+            </article>
           ))
         ) : (
           <div className="text-center py-12">
             <p className="text-gray-500">No articles found.</p>
           </div>
         )}
-      </div>
-      <Stack spacing={2}>
-        <Pagination count={total} page={page} onChange={handleChange} />
-      </Stack>
-    </div>
+      </section>
+      <nav aria-label="Articles pagination">
+        <Stack spacing={2}>
+          <Pagination count={total} page={page} onChange={handleChange} />
+        </Stack>
+      </nav>
+    </main>
+    
+    {/* JSON-LD schemas */}
+    <Script 
+      type="application/ld+json" 
+      id="collection-schema" 
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} 
+    />
+    <Script 
+      type="application/ld+json" 
+      id="breadcrumb-schema" 
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} 
+    />
+  </>
   );
 } 

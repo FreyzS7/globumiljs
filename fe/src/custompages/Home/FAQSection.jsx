@@ -1,10 +1,12 @@
 import React from 'react';
+import Script from 'next/script';
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { generateFAQSchema } from "@/lib/schema";
 
 const faqs = [
   {
@@ -33,8 +35,15 @@ const faqs = [
 ];
 
 export const FAQSection = () => {
+  // Generate FAQ schema for structured data
+  const faqSchema = generateFAQSchema(faqs.map(faq => ({
+    question: faq.question,
+    answer: Array.isArray(faq.answer) ? faq.answer.join(' ') : faq.answer
+  })));
+
   return (
-    <div className="w-full flex flex-col  justify-center items-center  pb-[30px] md:pb-[84px] px-2"> 
+    <>
+      <div className="w-full flex flex-col  justify-center items-center  pb-[30px] md:pb-[84px] px-2"> 
       <div className='w-full flex justify-center items-center'>
         <h2 className="w-[90%] text-2xl md:text-4xl font-bold text-center mb-5"> Hal Yang Sering Ditanyakan </h2>
       </div>
@@ -88,5 +97,13 @@ export const FAQSection = () => {
       </div>
     </div>
     </div>
+
+    {/* FAQ Schema */}
+    <Script 
+      type="application/ld+json" 
+      id="faq-schema" 
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} 
+    />
+  </>
   );
 };

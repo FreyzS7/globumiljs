@@ -55,7 +55,7 @@ const EmblaCarousel = ({ articles }) => {
                 <img
                   src={`${UPLOADS_URL}${article.gambar}`}
                    alt={shortenAltText(article.judul,30) }
-                  className="w-full h-56 object-cover rounded-[2rem] mb-4"
+                  className="h-[200px] w-[350px] object-cover rounded-[2rem] mb-4"
                 />
                 <p className="text-center text-base font-medium text-black px-2">
                   {article.judul}
@@ -73,7 +73,7 @@ const EmblaCarousel = ({ articles }) => {
             key={index}
             type="button"
             className={`w-3 h-3 rounded-full transition-colors ${
-              index === selectedIndex ? 'bg-[#FFD1DA]' : 'bg-[#FFD1DA] opacity-50'
+              index === selectedIndex ? 'bg-[#f39aab]' : 'bg-[#ee718a] opacity-50'
             }`}
             onClick={() => scrollTo(index)}
           >
@@ -134,6 +134,7 @@ export const ArtikelGlobumilSection = ({title, description} ) => {
                 width={500}
                 height={300}
                 src={`${UPLOADS_URL}${article.gambar}`}
+                className='h-[200px] w-[350px] object-cover rounded-[2rem] mb-4'
               />
               <p className="text-center text-base font-medium text-black">
                 {article.judul}

@@ -14,41 +14,29 @@ export default function ProductsServer({ products, total, currentPage, showPagin
       </div>
 
       <div
-        className={`grid ${gridColumns} sm:grid-cols-1 md:grid-cols-2 gap-6 justify-center items-center w-full`}
+        className={`grid ${gridColumns} grid-cols-1 md:grid-cols-2 gap-6 justify-center items-center w-full`}
       >
         {products?.map((product, index) => (
-          
-          <article
-            key={product.id_produk}
-            className="card transform transition duration-300 hover:scale-105 shadow-lg rounded-lg overflow-hidden animate-fadeInAndScale"
-            style={{ animationDelay: `${index * 0.1}s` }}
-          >
-            <img
-              src={`${UPLOADS_URL}${product.gambar}`}
-              alt={`Image of ${product.nama_produk}`}
-              className="w-full h-48 object-scale-down"
-            />
-            <div className="p-4 flex flex-col flex-grow">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2 flex-grow text-center">
-                {product.nama_produk}
-              </h3>
-              {/* Uncomment if product prices are to be shown */}
-              {/* <div className="flex items-center justify-between mb-4">
-                <span className="text-xl font-bold text-primary-600">
-                  Rp {parseInt(product.harga_produk).toLocaleString()}
-                </span>
-              </div> */}
-              <div className="flex gap-4 mt-auto">
-                <Link
-                  style={{ color: 'white' }}
-                  href={`/${VIEW_PRODUCT_URL}${product.id_produk}/${formatUrlTitle(product.nama_produk)}`}
-                  className="btn btn-primary flex-1 text-center py-2 bg-[#f692a6] hover:bg-[#c77283] text-white"
-                >
-                  View Details
-                </Link>
-              </div>
-            </div>
-          </article>
+           <Link
+                key={product.id_produk}
+                href={`/${VIEW_PRODUCT_URL}${product.id_produk}/${formatUrlTitle(product.nama_produk)}`}
+                className="flex flex-col items-center group hover:bg-white rounded-lg p-2 md:p-3 transition-all duration-200 hover:shadow-md"
+              >
+                <div className="w-full aspect-square mb-2 overflow-hidden rounded-lg bg-gray-100">
+                  <img
+                    src={`${UPLOADS_URL}${product.gambar}`}
+                    alt={product.nama_produk}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                  />
+                </div>
+                {/* <span className="font-semibold text-xs md:text-sm text-center line-clamp-2 group-hover:black transition-colors">
+                  {product.nama_produk}
+                </span> */}
+                {/* <span className="text-xs md:text-sm text-green-600 font-medium mt-1">
+                  Rp. {parseInt(product.harga_produk).toLocaleString()}
+                </span> */}
+              </Link>
+        
         ))}
       </div>
 

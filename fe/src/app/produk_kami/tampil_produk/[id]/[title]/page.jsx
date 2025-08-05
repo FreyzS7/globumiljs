@@ -5,6 +5,8 @@ import { notFound } from 'next/navigation';
 import MungkinKamuSuka from '@/components/products/MungkinKamuSuka';
 import { METADATA_BASE_URL, UPLOADS_URL, VIEW_PRODUCT_URL, BASE_URL } from '@/utils/constant';
 import { getAllProducts, getProductById } from '@/lib/products';
+import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/schema';
+import Script from 'next/script';
 
 
 import fs from 'fs';
@@ -133,7 +135,7 @@ export async function generateMetadata({ params }) {
 
 // Main page component - Server Component that fetches data
 export default async function ProductDetailPage({ params }) {
-  const { id } = await params;
+  const { id, title } = await params;
 
   // Fetch product data at build time
   const product = await getProductById(id);
@@ -141,16 +143,54 @@ export default async function ProductDetailPage({ params }) {
   if (!product) {
     notFound();
   }
+
+  // Generate comprehensive product schema
+  const productSchema = generateProductSchema({
+    ...product,
+    slug: title,
+    gambar_produk: product.gambar || product.gambar_produk,
+    id_produk: product.id_produk
+  });
+
+  // Generate breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    {
+      name: "Beranda",
+      url: METADATA_BASE_URL
+    },
+    {
+      name: "Produk",
+      url: `${METADATA_BASE_URL}/produk_kami`
+    },
+    {
+      name: product.nama_produk,
+      url: `${METADATA_BASE_URL}/produk_kami/tampil_produk/${id}/${title}`
+    }
+  ]);
   
   return (
-    <div className="container mx-auto px-4 py-8 flex flex-col items-center justify-center gap-10">
-      {/* Product content */}
-      <ProductContent product={product} />
-      
-      {/* Comments section (client component) */}
-      <Comment Id={product.id_produk} type="product" />
+    <>
+      <div className="container mx-auto px-4 py-8 flex flex-col items-center justify-center gap-10">
+        {/* Product content */}
+        <ProductContent product={product} />
+        
+        <MungkinKamuSuka />
+        
+        {/* Comments section (client component) */}
+        <Comment Id={product.id_produk} type="product" />
+      </div>
 
-      <MungkinKamuSuka />
-    </div>
+      {/* JSON-LD structured data for SEO */}
+      <Script 
+        type="application/ld+json" 
+        id="product-schema" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} 
+      />
+      <Script 
+        type="application/ld+json" 
+        id="breadcrumb-schema" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} 
+      />
+    </>
   );
 }

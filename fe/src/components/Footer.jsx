@@ -11,7 +11,9 @@ export const Footer = () => {
         </p>
         <div className="flex items-center justify-center w-[50%]">
           <div className="bg-[#FFF6F6] rounded-full p-2 shadow-md">
+            <Link href="https://wa.me/6285219971491" target="_blank" rel="noopener noreferrer">
             <img src="/logo/sosmed/Whatapp.png" alt="WhatsApp" className="h-14 w-18 object-contain" />
+            </Link>
           </div>
         </div>
       </div>
@@ -22,10 +24,10 @@ export const Footer = () => {
         <div className="w-[50%] md:ml-[5%] flex flex-col items-center md:items-start">
           <div className="mb-3 font-medium text-center md:text-left">Sosial Media Kami</div>
           <div className="flex gap-4">
-            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/globumil/?hl=en" target="_blank" rel="noopener noreferrer">
               <img src="/logo/sosmed/Instagram.png" alt="Instagram" className="h-10 w-10 object-contain" />
             </a>
-            <a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.tiktok.com/@globumil.official" target="_blank" rel="noopener noreferrer">
               <img src="/logo/sosmed/Tiktok.png" alt="TikTok" className="h-10 w-10 object-contain" />
             </a>
           </div>
@@ -36,8 +38,11 @@ export const Footer = () => {
           <div>
             <div className="mb-3 font-medium text-center md:text-left">Info dan Bantuan</div>
             <ul className="space-y-2 text-sm text-center md:text-left">
-              <li><a href="#" className="hover:underline" style={{color: "#000"}}>Tentang Kami</a></li>
-              <li><a href="#" className="hover:underline" style={{color: "#000"}}>Hubungi Kami</a></li>
+              <li>
+                
+                <Link aria-label='Tentang Kami' href={"/tentang_kami"} className="hover:underline">Tentang Kami</Link>
+                </li>
+              <li><a href="https://wa.me/6285219971491" className="hover:underline" style={{color: "#000"}}>Hubungi Kami</a></li>
             </ul>
           </div>
           <div>

@@ -64,6 +64,10 @@ const nextConfig = {
         source: '/artikel_kami',
         destination: '/artikel',
         permanent: true,
+      },{
+        source: '/produk_kami/produk_kami2',
+        destination: '/produk_kami',
+        permanent: true,
       },
       
     ];
