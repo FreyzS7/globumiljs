@@ -14,7 +14,7 @@ export default function ProductsServer({ products, total, currentPage, showPagin
       </div>
 
       <div
-        className={`grid ${gridColumns} sm:grid-cols-1 md:grid-cols-2 gap-6 justify-center items-center w-full`}
+        className={`grid ${gridColumns} grid-cols-1 md:grid-cols-2 gap-6 justify-center items-center w-full`}
       >
         {products?.map((product, index) => (
           

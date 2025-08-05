@@ -79,36 +79,39 @@ export default function Cart() {
               </div>
               
               {/* Quantity and Total */}
-              <div className="flex flex-row items-center justify-between mb-4">
-                <div className="flex flex-row items-center">
+              <div className="flex flex-row items-center justify-between md:justify-between mb-4">
+                <div className="flex flex-row items-center gap-1">
                   <span className="text-sm font-medium text-gray-700 mr-3">Kuantitas:</span>
                   <button
                     onClick={() => handleQuantityChange(item.id_produk, -1)}
                     className="px-2 py-1 bg-gray-200 rounded-l-full text-sm font-bold hover:bg-gray-300"
                   >-</button>
-                  <span className="px-3 py-1 text-sm font-semibold bg-white border border-gray-200">{item.quantity}</span>
+                  <span className="rounded-md px-3 py-1 text-sm font-semibold bg-white border border-gray-200">{item.quantity}</span>
                   <button
                     onClick={() => handleQuantityChange(item.id_produk, 1)}
                     className="px-2 py-1 bg-gray-200 rounded-r-full text-sm font-bold hover:bg-gray-300"
                   >+</button>
                 </div>
-                <div className="text-sm font-semibold text-gray-900">
-                  Total: Rp. {(item.harga_produk * item.quantity).toLocaleString()}
+                <div className="text-center text-sm font-semibold text-gray-900">
+                  Rp. {(item.harga_produk * item.quantity).toLocaleString()}
                 </div>
               </div>
               
               {/* Order Buttons */}
-              <div className="flex flex-row items-center gap-2">
-                <span className="text-xs text-gray-600 mr-2">Pesan via:</span>
-                <a href={item.link_produk} target="_blank" rel="noopener noreferrer">
+              <div className="flex flex-row items-center gap-2 justify-start">
+              
+                <span className="text-sm font-medium text-gray-700 md:pr-0 pr-3">Pesan via:</span>
+                <div className="flex flex-row items-center justify-center gap-5">
+                  <a href={item.link_produk} target="_blank" rel="noopener noreferrer">
                   <img src="/logo/sosmed/Shoope.png" alt="Shopee" className="w-6 h-6" />
                 </a>
-                <a href={item.link_produk} target="_blank" rel="noopener noreferrer">
+                <a href="https://www.tiktok.com/@medikacare.official" target="_blank" rel="noopener noreferrer">
                   <img src="/logo/sosmed/Tiktok.png" alt="TikTok" className="w-6 h-6" />
                 </a>
                 <a href={item.link_produk} target="_blank" rel="noopener noreferrer">
                   <img src="/logo/sosmed/Whatapp.png" alt="WhatsApp" className="w-6 h-6" />
                 </a>
+                  </div>
               </div>
               <hr className="my-4 w-full bg-amber-200" />
             </div>
@@ -150,7 +153,7 @@ export default function Cart() {
                   <a href= {`${item.link_produk}`}  target="_blank" rel="noopener noreferrer">
                     <img src="/logo/sosmed/Shoope.png" alt="Shopee" className="w-8 h-8" />
                   </a>
-                  <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.tiktok.com/@medikacare.official" target="_blank" rel="noopener noreferrer">
                     <img src="/logo/sosmed/Tiktok.png" alt="TikTok" className="w-8 h-8" />
                   </a>
                   <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">
@@ -170,9 +173,9 @@ export default function Cart() {
 
       {/* Total Row */}
       <div className="w-full max-w-5xl flex justify-center md:justify-end items-center mt-6 px-3 md:pr-8">
-        <div className="bg-green-50 rounded-lg p-4 md:p-3 border border-green-200">
-          <span className="text-base md:text-lg font-bold mr-4">Total:</span>
-          <span className="text-xl md:text-2xl font-bold text-green-600">Rp. {total.toLocaleString()}</span>
+        <div className="bg-green-50 rounded-lg p-2 md:p-3 border border-green-200">
+          <span className="text-[0.7rem] md:text-[1rem] font-bold mr-4">Total:</span>
+          <span className="text-[0.7rem] md:text-[1rem] font-bold text-green-600">Rp. {total.toLocaleString()}</span>
         </div>
       </div>
 

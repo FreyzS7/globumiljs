@@ -52,6 +52,7 @@ export default function Navbar() {
              <button
               onClick={() => setIsSearchModalOpen(true)}
               aria-label="Search"
+              className='bg-[#fff6f6]'
             >
               <MagnifyingGlassIcon className="h-6 w-6" />
             </button>
@@ -66,7 +67,7 @@ export default function Navbar() {
           <div className="hover:text-pink-500 transition-colors w-10 h-10 flex items-center justify-center">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button aria-label="Open menu">
+                <button aria-label="Open menu" className='bg-[#fff6f6]'>
                   <Bars3Icon className="h-7 w-7" />
                 </button>
               </DropdownMenuTrigger>

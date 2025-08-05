@@ -1,6 +1,7 @@
 import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import BlurText from '../../components/animations/BlurText';
+import Link from 'next/link';
 
 export const ManfaatSection = () => {
   const handleAnimationComplete = () => {
@@ -33,7 +34,10 @@ export const ManfaatSection = () => {
                 />
             </div>
             <div className='z-10 font-bold absolute left-1/2 -translate-x-1/2 bottom-[-10%] md:bottom-[-7%] flex items-center justify-center w-[80%] h-[30px] md:h-[50px] bg-[#FFD1DA] rounded-full'>
+              <Link href='/tentang_kami'>
                <p className='text-[0.5rem] md:text-[1rem] p-4 text-center'>Baca Selengkapnya</p>
+              </Link>
+              
             </div>
         </div>
 

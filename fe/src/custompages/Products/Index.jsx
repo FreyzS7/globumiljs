@@ -22,11 +22,11 @@ export default function Products() {
         <h1 className="text-3xl text-center font-bold text-gray-900">Produk Globumil</h1>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 gap-6">
         {products?.data?.map((product) => (
           <article 
             key={product.id_produk} 
-            className="card transform transition duration-300 hover:scale-105 shadow-lg rounded-lg overflow-hidden animate-fadeInAndScale"
+            className="w-full card transform transition duration-300 hover:scale-105 shadow-lg rounded-lg overflow-hidden animate-fadeInAndScale"
             style={{ animationDelay: `${product.id_produk * 0.1}s`}} // Add a slight delay based on index
           >
             <img

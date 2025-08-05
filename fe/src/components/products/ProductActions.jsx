@@ -65,10 +65,10 @@ export default function ProductActions({ product }) {
     <div className="space-y-4">
       {/* Quantity Selector */}
       <div>
-        <label className="text-sm font-medium text-gray-700 block mb-2">
+        {/* <label className="text-sm font-medium text-gray-700 block mb-2">
           Jumlah
-        </label>
-        <div className="flex items-center gap-4">
+        </label> */}
+        <div className="flex items-center gap-4 bg-white rounded-2xl p-1 flex-row justify-center w-[50%] md:w-[32%]">
           <button
             onClick={() => handleQuantityChange(-1)}
             className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition"
@@ -88,8 +88,8 @@ export default function ProductActions({ product }) {
       {/* Total Price */}
       <div className="border-t pt-4">
         <div className="flex justify-between items-center">
-          <span className="text-gray-600">Total:</span>
-          <span className="text-2xl font-bold text-primary-600">
+           
+          <span className="md:text-2xl text-md font-bold text-primary-600">
             Rp {totalPrice.toLocaleString('id-ID')}
           </span>
         </div>

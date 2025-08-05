@@ -165,11 +165,11 @@ export default async function ArticleDetailPage({ params }) {
         {/* Article content */}
         <ArticleContent article={article} />
 
-        {/* Comments section (client component) */}
-        <Comment Id={article.id_artikel.toString()} type="article" />
-
+       
         {/* Related articles section */}
         <ArtikelGlobumilSection title="Artikel Lainnya" description="Temukan artikel menarik lainnya" background={false} />
+        {/* Comments section (client component) */}
+        <Comment Id={article.id_artikel.toString()} type="article" />
 
         {/* JSON-LD structured data for SEO */}
         <Script type="application/ld+json" id="jsonld-article" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

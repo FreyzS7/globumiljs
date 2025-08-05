@@ -147,10 +147,12 @@ export default async function ProductDetailPage({ params }) {
       {/* Product content */}
       <ProductContent product={product} />
       
+      <MungkinKamuSuka />
+      
       {/* Comments section (client component) */}
       <Comment Id={product.id_produk} type="product" />
 
-      <MungkinKamuSuka />
+      
     </div>
   );
 }
