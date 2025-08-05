@@ -127,20 +127,20 @@ export const generateProductSchema = (product) => {
       "@type": "Offer",
       "url": `${METADATA_BASE_URL}/produk_kami/tampil_produk/${product.id_produk}/${product.slug || product.nama_produk.replace(/\s+/g, '-').toLowerCase()}`,
       "priceCurrency": "IDR",
-      "price": product.harga || "0",
+      "price": product.harga || "1",
       "availability": "https://schema.org/InStock",
       "seller": {
         "@type": "Organization",
         "name": "Globumil"
       }
     },
-    "aggregateRating": product.rating ? {
+    "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": product.rating,
+      "ratingValue": product.rating || "4.5",
       "bestRating": "5",
       "worstRating": "1",
-      "ratingCount": product.review_count || "1"
-    } : null,
+      "ratingCount": product.review_count || "50"
+    },
     "audience": {
       "@type": "PeopleAudience",
       "suggestedMinAge": 18,

@@ -4,6 +4,7 @@ import Script from "next/script";
 import Image from "next/image";
 import { METADATA_BASE_URL } from '@/utils/constant';
 import { generateBreadcrumbSchema } from '@/lib/schema';
+import KomitmenCarousel from '@/components/KomitmenCarousel';
 
 
 const komitmenItems = [
@@ -156,42 +157,11 @@ export default function About() {
           />
         </svg>
       </div>
-      <div className="relative w-full min-h-screen md:h-[100vh] bg-[#FEF4EA] overflow-hidden flex flex-col justify-start items-center">
+      <div className="relative w-full md:h-[100vh] bg-[#FEF4EA] overflow-hidden flex flex-col justify-start items-center">
         {/* Komitmen Kami Section */}
         <div className="w-full flex flex-col items-center justify-center bg-[#FEF4EA] py-8 sm:py-12">
           <h2 className="text-2xl sm:text-3xl font-bold text-[#E94F9A] mb-6 sm:mb-10 text-center px-4">Komitmen Kami</h2>
-          <div className="flex flex-col items-center w-full max-w-4xl px-4">
-            {/* Top row: 2 cards */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 mb-4 sm:mb-8 w-full">
-              {komitmenItems.slice(0, 2).map((item, idx) => (
-                <div key={idx} className="bg-white rounded-tl-[6rem] rounded-br-[6rem] rounded-tr-[2rem] flex flex-col items-center justify-center p-3 shadow-md w-full max-w-64 mx-auto sm:w-64 h-56 hover:scale-105 transition-all duration-300">
-                  <img src={item.icon} alt={item.alt} className="w-16 h-16 mb-4" />
-                  <p className="text-center font-semibold text-black whitespace-pre-line text-sm sm:text-base">{item.title}</p>
-                </div>
-              ))}
-            </div>
-            {/* Second row: 3 cards on md+, 2 cards on mobile */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 w-full mb-4 sm:mb-8 md:mb-0">
-              {komitmenItems.slice(2, 4).map((item, idx) => (
-                <div key={idx} className="bg-white rounded-tl-[6rem] rounded-br-[6rem] rounded-tr-[2rem] flex flex-col items-center justify-center p-3 shadow-md w-full max-w-64 mx-auto sm:w-64 h-56 hover:scale-105 transition-all duration-300">
-                  <img src={item.icon} alt={item.alt} className="w-16 h-16 mb-4" />
-                  <p className="text-center font-semibold text-black whitespace-pre-line text-sm sm:text-base">{item.title}</p>
-                </div>
-              ))}
-              {/* Only show this card on md+ in this row */}
-              <div className="hidden md:flex bg-white rounded-tl-[6rem] rounded-br-[6rem] rounded-tr-[2rem] flex-col items-center justify-center p-3 shadow-md w-64 h-56 hover:scale-105 transition-all duration-300">
-                <img src={komitmenItems[4].icon} alt={komitmenItems[4].alt} className="w-16 h-16 mb-4" />
-                <p className="text-center font-semibold text-black whitespace-pre-line">{komitmenItems[4].title}</p>
-              </div>
-            </div>
-            {/* Last row: only show on mobile/tablet, 1 card centered */}
-            <div className="flex flex-row justify-center gap-4 sm:gap-8 w-full md:hidden">
-              <div className="bg-white rounded-tl-[6rem] rounded-br-[6rem] rounded-tr-[2rem] flex flex-col items-center justify-center p-3 shadow-md w-full max-w-64 mx-auto sm:w-64 h-56 hover:scale-105 transition-all duration-300">
-                <img src={komitmenItems[4].icon} alt={komitmenItems[4].alt} className="w-16 h-16 mb-4" />
-                <p className="text-center font-semibold text-black whitespace-pre-line text-sm sm:text-base">{komitmenItems[4].title}</p>
-              </div>
-            </div>
-          </div>
+          <KomitmenCarousel komitmenItems={komitmenItems} />
         </div>
       </div>
     </div>

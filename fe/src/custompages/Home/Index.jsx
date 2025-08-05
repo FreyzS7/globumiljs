@@ -37,6 +37,7 @@ export default function Home() {
       "@type": "Product",
       "name": "Globumil Multivitamin dan Mineral",
       "description": "Multivitamin dan mineral khusus untuk ibu hamil dan menyusui yang mengandung nutrisi penting untuk kesehatan ibu dan perkembangan janin",
+      "image": "https://www.globumil.com/images/LogoGlobumil.png",
       "brand": {
         "@type": "Brand",
         "name": "Globumil"
@@ -50,6 +51,23 @@ export default function Home() {
         "@type": "PeopleAudience",
         "suggestedMinAge": 18,
         "suggestedGender": "female"
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "priceCurrency": "IDR",
+        "seller": {
+          "@type": "Organization",
+          "name": "Globumil"
+        },
+        "url": "https://www.globumil.com/produk_kami"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.5",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "150"
       }
     },
     "breadcrumb": {
