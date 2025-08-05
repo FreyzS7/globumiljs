@@ -1,6 +1,9 @@
 
 import React from "react";
+import Script from "next/script";
 import Image from "next/image";
+import { METADATA_BASE_URL } from '@/utils/constant';
+import { generateBreadcrumbSchema } from '@/lib/schema';
 
 
 const komitmenItems = [
@@ -31,8 +34,49 @@ const komitmenItems = [
   }
 ];
 export default function About() {
+  // Generate breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    {
+      name: "Beranda",
+      url: METADATA_BASE_URL
+    },
+    {
+      name: "Tentang Kami",
+      url: `${METADATA_BASE_URL}/tentang_kami`
+    }
+  ]);
+
+  // About page schema
+  const aboutPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Tentang Kami - Globumil",
+    "description": "Pelajari lebih lanjut tentang Globumil, perusahaan yang berkomitmen menghadirkan suplemen kehamilan berkualitas tinggi. Dipercaya oleh ribuan ibu hamil di Indonesia.",
+    "url": `${METADATA_BASE_URL}/tentang_kami`,
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Globumil",
+      "description": "Multivitamin dan mineral untuk ibu hamil yang diformulasikan oleh dokter kandungan sub spesialis fetomaternal",
+      "url": METADATA_BASE_URL,
+      "founder": {
+        "@type": "Person",
+        "name": "Tim Dokter Spesialis Kandungan"
+      },
+      "knowsAbout": [
+        "Kesehatan Ibu Hamil",
+        "Suplemen Kehamilan", 
+        "Multivitamin",
+        "Mineral untuk Kehamilan",
+        "Perkembangan Janin"
+      ],
+      "areaServed": "Indonesia",
+      "serviceType": "Healthcare Products"
+    }
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center">
+    <>
+      <div className="flex flex-col items-center justify-center">
        <div className="w-full h-auto mx-auto bg-white flex flex-col justify-start items-center">
       <div className="relative w-full min-h-[100vh] sm:min-h-[90vh] md:h-[100vh] bg-[#FEF4EA] overflow-hidden flex flex-col justify-start items-center">
         <div className="flex flex-col gap-4 sm:gap-6 md:gap-6 md:flex-row items-center justify-between md:justify-center w-full min-h-[75vh] sm:min-h-[65vh] md:h-[70vh] px-4 sm:px-8 md:px-34 py-6 sm:py-8 md:pt-0 pb-20 sm:pb-16 md:pb-0">
@@ -152,5 +196,18 @@ export default function About() {
       </div>
     </div>
     </div>
+
+    {/* About page schemas */}
+    <Script 
+      type="application/ld+json" 
+      id="about-page-schema" 
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }} 
+    />
+    <Script 
+      type="application/ld+json" 
+      id="about-breadcrumb-schema" 
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} 
+    />
+  </>
   );
 } 

@@ -9,7 +9,7 @@ export const ManfaatSection = () => {
   };
 
   return (
-    <div className="w-full h-auto md:h-[582px] flex-wrap md:flex-nowrap flex flex-row items-start md:items-center justify-between md:gap-5 md:mt-8 md:px-0 pb-[30px] md:pb-[84px]">
+    <div className="w-full h-auto md:h-[582px] flex-wrap md:flex-nowrap flex flex-row items-start md:items-start justify-between md:gap-5 md:mt-8 md:px-0 pb-[30px] md:pb-[84px]">
         {/* Title Section */}
      
         <div className="flex h-full w-full md:w-1/3 flex-col justify-center items-center rounded-xl p-2 md:p-5 text-center order-1 md:order-1">
@@ -42,7 +42,7 @@ export const ManfaatSection = () => {
         </div>
 
         {/* Benefits Section */}
-        <div className="flex h-full w-[50%] md:w-1/3 flex-col gap-4 md:gap-5 justify-start md:justify-center items-end rounded-xl py-0 md:py-6 order-3 md:order-3">
+        <div className="flex h-full w-[50%] md:w-1/3 flex-col gap-4 md:gap-5 justify-start md:justify-center items-end rounded-xl py-0 md:py-0 order-3 md:order-3">
             <div className='relative flex flex-row items-center justify-around bg-[#FFD1DA] w-[95%] h-[50px] md:h-[30%] rounded-l-full'>
                 <div className='absolute left-[10%] md:left-[8%] aspect-square w-[15%] h-auto flex items-center justify-center'>
                     <img src='/images/Home/Manfaat/icons/Janin.png' alt='Manfaat' className='object-cover w-full h-full' />

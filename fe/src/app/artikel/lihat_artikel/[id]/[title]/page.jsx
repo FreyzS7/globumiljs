@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { METADATA_BASE_URL, UPLOADS_URL } from '@/utils/constant';
 import { ArtikelGlobumilSection } from '@/custompages/Home/ArtikelGlobumilSection';
 import { getAllArticles, getArticleById } from '@/lib/articles';
+import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import Script from 'next/script';
 
 import fs from 'fs';
@@ -131,31 +132,33 @@ export default async function ArticleDetailPage({ params }) {
       notFound();
     }
 
-    const jsonLd = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": `${METADATA_BASE_URL}/artikel/${id}/${title}`
+    // Generate comprehensive article schema
+    const articleSchema = generateArticleSchema({
+      ...article,
+      slug: title
+    });
+
+    // Generate breadcrumb schema
+    const breadcrumbSchema = generateBreadcrumbSchema([
+      {
+        name: "Beranda",
+        url: METADATA_BASE_URL
       },
-      "headline": article.judul,
-      "image": article.gambar ? [`${UPLOADS_URL}${article.gambar}`] : ['/images/About/bidannovi.jpg'],
-      "datePublished": article.tanggal_input,
-      "dateModified": article.tanggal_update || article.tanggal_input,
-      "author": {
-        "@type": "Person",
-        "name": article.admin || "Globumil Team"
+      {
+        name: "Artikel",
+        url: `${METADATA_BASE_URL}/artikel`
       },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Globumil",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "/images/About/bidannovi.jpg"
-        }
-      },
-      "description": article.kata_awal || article.deskripsi || "Baca artikel kesehatan dan tips untuk ibu hamil dan menyusui dari Globumil."
-    };
+      {
+        name: article.judul,
+        url: `${METADATA_BASE_URL}/artikel/lihat_artikel/${id}/${title}`
+      }
+    ]);
+
+    // Combine schemas
+    const jsonLd = [
+      articleSchema,
+      breadcrumbSchema
+    ];
 
     return (
       <>
@@ -172,7 +175,14 @@ export default async function ArticleDetailPage({ params }) {
         <Comment Id={article.id_artikel.toString()} type="article" />
 
         {/* JSON-LD structured data for SEO */}
-        <Script type="application/ld+json" id="jsonld-article" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        {jsonLd.map((schema, index) => (
+          <Script 
+            key={`schema-${index}`}
+            type="application/ld+json" 
+            id={`jsonld-article-${index}`} 
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} 
+          />
+        ))}
       </>
     );
   } catch (error) {

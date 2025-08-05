@@ -6,7 +6,7 @@
 set -e
 
 # Configuration
-DOMAIN="https://hallobundapedia.id"
+DOMAIN="https://www.globumil.com"
 FTP_USER="hallobu1"
 FTP_HOST="ftp.hallobundapedia.id"
 REMOTE_PATH="/public_html"

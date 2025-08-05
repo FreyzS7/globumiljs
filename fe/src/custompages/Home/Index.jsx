@@ -21,28 +21,70 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Globumil Multivitamin dan Mineral Ibu Hamil",
-    "url": "https://globumil.com",
-    "description": "Globumil Multivitamin dan Mineral Ibu Hamil mendukung kesehatan ibu dan janin dengan kandungan vitamin dan mineral penting.",
+    "url": "https://www.globumil.com",
+    "description": "Globumil Multivitamin dan Mineral Ibu Hamil mendukung kesehatan ibu dan janin dengan kandungan vitamin dan mineral penting. Dapatkan informasi lengkap dan produk berkualitas untuk kesehatan kehamilan.",
     "publisher": {
       "@type": "Organization",
       "name": "Globumil",
       "logo": {
         "@type": "ImageObject",
-        "url": "/images/About/bidannovi.jpg"
+        "url": "/images/LogoGlobumil.png",
+        "width": 200,
+        "height": 100
       }
-    }
+    },
+    "mainEntity": {
+      "@type": "Product",
+      "name": "Globumil Multivitamin dan Mineral",
+      "description": "Multivitamin dan mineral khusus untuk ibu hamil dan menyusui yang mengandung nutrisi penting untuk kesehatan ibu dan perkembangan janin",
+      "brand": {
+        "@type": "Brand",
+        "name": "Globumil"
+      },
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Globumil"
+      },
+      "category": "Health & Beauty > Health Care > Vitamins & Supplements",
+      "audience": {
+        "@type": "PeopleAudience",
+        "suggestedMinAge": 18,
+        "suggestedGender": "female"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Beranda",
+          "item": "https://www.globumil.com"
+        }
+      ]
+    },
+    "potentialAction": [
+      {
+        "@type": "ReadAction",
+        "target": "https://www.globumil.com/artikel"
+      },
+      {
+        "@type": "ViewAction",
+        "target": "https://www.globumil.com/produk_kami"
+      }
+    ]
   };
 
   return   (
     <>
-      <div className="flex flex-col items-center justify-center">
+      <main className="flex flex-col items-center justify-center">
         <HeroSection />
         <ManfaatSection />
         <KeunggulanSection />
         <FAQSection />
         <ArtikelGlobumilSection title="Artikel Globumil" description="Berita & Edukasi Kehamilan" background = {false}/>
         <KataParaAhliSection />
-      </div>
+      </main>
       <Script type="application/ld+json" id="jsonld-homepage" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </>
 );

@@ -73,7 +73,7 @@ const EmblaCarousel = ({ articles }) => {
             key={index}
             type="button"
             className={`w-3 h-3 rounded-full transition-colors ${
-              index === selectedIndex ? 'bg-[#FFD1DA]' : 'bg-[#FFD1DA] opacity-50'
+              index === selectedIndex ? 'bg-[#f39aab]' : 'bg-[#ee718a] opacity-50'
             }`}
             onClick={() => scrollTo(index)}
           >

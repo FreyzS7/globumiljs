@@ -68,8 +68,8 @@ export const KataParaAhliSection = () => {
                   </div>
                   <div className="flex flex-col items-center p-1 rounded-lg w-[95%] md:w-[90%] pt-16">
                     <div className='w-full bg-white flex flex-col items-center justify-start pt-10 rounded-[1rem] p-4 min-h-[300px]'>
-                      <h3 className="text-lg font-semibold text-[#D14D72] text-center mb-2">{expert.name}</h3>
-                      <p className="text-[#828282] text-left text-sm line-clamp-10">{expert.quote}</p>
+                      <h3 className="text-lg font-semibold text-[#B91C7C] text-center mb-2">{expert.name}</h3>
+                      <p className="text-[#4A5568] text-left text-sm line-clamp-10">{expert.quote}</p>
                     </div>
                   </div>
                 </div>
@@ -85,9 +85,11 @@ export const KataParaAhliSection = () => {
             key={index}
             type="button"
             className={`w-3 h-3 rounded-full transition-colors ${
-              index === selectedIndex ? 'bg-[#FFD1DA]' : 'bg-[#FFD1DA] opacity-50'
+              index === selectedIndex ? 'bg-[#B91C7C]' : 'bg-[#9CA3AF] opacity-70'
             }`}
             onClick={() => scrollTo(index)}
+            aria-label={`Go to slide ${index + 1}`}
+            aria-current={index === selectedIndex ? 'true' : 'false'}
           >
           </button>
         ))}

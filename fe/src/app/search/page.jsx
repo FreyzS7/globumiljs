@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
+import Script from 'next/script';
 import SearchClientWrapper from './SearchClientWrapper';
 import { METADATA_BASE_URL, BASE_URL } from '@/utils/constant';
+import { generateBreadcrumbSchema } from '@/lib/schema';
 
 // Static metadata for search page
 export const metadata = {
@@ -39,10 +41,53 @@ export const metadata = {
 
 // Main search page component (Server Component wrapper)
 export default function SearchPage() {
+  // Generate breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    {
+      name: "Beranda",
+      url: METADATA_BASE_URL
+    },
+    {
+      name: "Pencarian",
+      url: `${METADATA_BASE_URL}/search`
+    }
+  ]);
+
+  // Search page specific schema
+  const searchPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "SearchResultsPage",
+    "name": "Pencarian - Globumil",
+    "description": "Cari produk kesehatan dan artikel untuk ibu hamil dan menyusui",
+    "url": `${METADATA_BASE_URL}/search`,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${METADATA_BASE_URL}/search?q={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   return (
-    <Suspense fallback={<SearchLoadingFallback />}>
-      <SearchClientWrapper />
-    </Suspense>
+    <>
+      <Suspense fallback={<SearchLoadingFallback />}>
+        <SearchClientWrapper />
+      </Suspense>
+      
+      {/* Search page schemas */}
+      <Script 
+        type="application/ld+json" 
+        id="search-page-schema" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(searchPageSchema) }} 
+      />
+      <Script 
+        type="application/ld+json" 
+        id="search-breadcrumb-schema" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} 
+      />
+    </>
   );
 }
 
