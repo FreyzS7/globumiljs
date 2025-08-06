@@ -24,7 +24,7 @@ export const ManfaatSection = () => {
         </div>
 
         {/* Product Image Section */}
-        <div className="pb-auto ml-2 md:ml-0 relative w-[45%] md:w-1/3 aspect-square flex justify-start md:justify-center items-end bg-[#FFCCE1] rounded-tr-[1rem] md:rounded-tr-[rem] rounded-br-[4rem] md:rounded-br-[10rem] rounded-tl-[4rem] md:rounded-tl-[10rem] shadow order-2 md:order-2">
+        <div className="shadow-xl md:shadow-none pb-auto ml-2 md:ml-0 relative w-[45%] md:w-1/3 aspect-square flex justify-start md:justify-center items-end bg-gradient-to-b from-[#FFCCE1] via-[#FFCCE1] to-[#f9e8ef] rounded-tr-[1rem] md:rounded-tr-[rem] rounded-br-[4rem] md:rounded-br-[10rem] rounded-tl-[4rem] md:rounded-tl-[10rem] order-2 md:order-2 ">
             
             <div className='absolute bottom-[-1rem] w-full h-[95%] flex justify-center items-end z-10'>
                 <LazyLoadImage 
@@ -33,9 +33,9 @@ export const ManfaatSection = () => {
                     alt='Globumil Product'
                 />
             </div>
-            <div className='z-10 font-bold absolute left-1/2 -translate-x-1/2 bottom-[-10%] md:bottom-[-7%] flex items-center justify-center w-[80%] h-[30px] md:h-[50px] bg-[#FFD1DA] rounded-full'>
+            <div className='z-10 font-bold absolute left-1/2 -translate-x-1/2 bottom-[-10%] md:bottom-[-7%] flex items-center justify-center w-[70%] md:w-[60%] h-[30px] md:h-[50px] bg-[#D8459B] rounded-full'>
               <Link href='/tentang_kami'>
-               <p className='text-[0.5rem] md:text-[1rem] p-4 text-center'>Baca Selengkapnya</p>
+               <p className='text-[0.5rem] md:text-[1.3rem] p-4 text-center text-white text-bold'>Baca Selengkapnya</p>
               </Link>
               
             </div>
