@@ -169,7 +169,7 @@ function ProductCard({ product, query }) {
             {highlightText(product.nama_produk, query)}
           </h3>
           <p className="text-gray-600 text-sm mb-3 line-clamp-3">
-            {highlightText(product.deskripsi_produk, query)}
+            {highlightText(product.deskripsi, query)}
           </p>
           <div className="flex items-center justify-between">
             <span className="text-lg font-bold text-blue-600">

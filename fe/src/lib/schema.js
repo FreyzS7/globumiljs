@@ -105,7 +105,7 @@ export const generateProductSchema = (product) => {
     "@type": "Product",
     "@id": `${METADATA_BASE_URL}/produk_kami/tampil_produk/${product.id_produk}/${product.slug || product.nama_produk.replace(/\s+/g, '-').toLowerCase()}`,
     "name": product.nama_produk,
-    "description": product.deskripsi_produk ? product.deskripsi_produk.replace(/<[^>]*>/g, '').substring(0, 500) : product.nama_produk,
+    "description": product.deskripsi ? product.deskripsi.replace(/<[^>]*>/g, '').substring(0, 500) : product.nama_produk,
     "image": {
       "@type": "ImageObject",
       "url": `${UPLOADS_URL}${product.gambar_produk}`,
