@@ -293,7 +293,7 @@ function ProductCard({ product }) {
             {product.nama_produk}
           </h3>
           <p className="text-gray-600 text-sm mb-3 line-clamp-3">
-            {product.deskripsi_produk}
+            {product.deskripsi}
           </p>
           <div className="flex items-center justify-between">
             <span className="text-lg font-bold text-blue-600">

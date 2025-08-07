@@ -88,11 +88,11 @@ class Search extends CI_Controller {
     }
 
     private function search_products($query, $limit, $offset) {
-        $this->db->select('id_produk, nama_produk, deskripsi_produk, harga_produk, gambar, link_produk');
+        $this->db->select('id_produk, nama_produk, deskripsi, harga_produk, gambar, link_produk');
         $this->db->from('produk');
         $this->db->group_start();
         $this->db->like('nama_produk', $query);
-        $this->db->or_like('deskripsi_produk', $query);
+        $this->db->or_like('deskripsi', $query);
         $this->db->group_end();
         // Remove status filter since it might not exist
         $this->db->order_by('nama_produk', 'ASC');
@@ -147,7 +147,7 @@ class Search extends CI_Controller {
         $this->db->from('produk');
         $this->db->group_start();
         $this->db->like('nama_produk', $query);
-        $this->db->or_like('deskripsi_produk', $query);
+        $this->db->or_like('deskripsi', $query);
         $this->db->group_end();
         // Remove status filter
         
