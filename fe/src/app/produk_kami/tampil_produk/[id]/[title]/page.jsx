@@ -6,6 +6,7 @@ import MungkinKamuSuka from '@/components/products/MungkinKamuSuka';
 import { METADATA_BASE_URL, UPLOADS_URL, VIEW_PRODUCT_URL, BASE_URL } from '@/utils/constant';
 import { getAllProducts, getProductById } from '@/lib/products';
 import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/schema';
+import formatUrlTitle from '@/utils/String';
 import Script from 'next/script';
 
 
@@ -27,9 +28,7 @@ export async function generateStaticParams() {
     // Generate params for each product
     const params = products.data.map(product => ({
       id: product.id_produk.toString(),
-      title: product.nama_produk.toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '')
+      title: formatUrlTitle(product.nama_produk)
     }));
     
     return params;
