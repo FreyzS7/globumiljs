@@ -312,7 +312,7 @@ function ProductCard({ product }) {
 // Article Card Component
 function ArticleCard({ article }) {
   return (
-    <Link href={`/artikel/lihat_artikel/${article.id_artikel}/${encodeURIComponent(article.judul.toLowerCase().replace(/\s+/g, '-'))}`} className="group">
+    <Link href={`/artikel/lihat_artikel/${article.id_artikel}/${formatUrlTitle(article.judul)}`} className="group">
       <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-6">
         <div className="flex gap-4">
           <div className="w-24 h-24 relative flex-shrink-0 rounded-lg overflow-hidden">

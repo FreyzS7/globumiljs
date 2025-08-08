@@ -1,4 +1,5 @@
 import { METADATA_BASE_URL, UPLOADS_URL } from '@/utils/constant';
+import formatUrlTitle from '@/utils/String';
 
 // Organization Schema - Main company information
 export const organizationSchema = {
@@ -58,7 +59,7 @@ export const generateArticleSchema = (article) => {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
-    "@id": `${METADATA_BASE_URL}/artikel/lihat_artikel/${article.id_artikel}/${article.slug || article.judul.replace(/\s+/g, '-').toLowerCase()}`,
+    "@id": `${METADATA_BASE_URL}/artikel/lihat_artikel/${article.id_artikel}/${article.slug || formatUrlTitle(article.judul)}`,
     "headline": article.judul,
     "description": article.kata_awal ? article.kata_awal.replace(/<[^>]*>/g, '').substring(0, 160) : article.judul,
     "image": {
@@ -85,7 +86,7 @@ export const generateArticleSchema = (article) => {
     "dateModified": article.tanggal_update || article.tanggal_input,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `${METADATA_BASE_URL}/artikel/lihat_artikel/${article.id_artikel}/${article.slug || article.judul.replace(/\s+/g, '-').toLowerCase()}`
+      "@id": `${METADATA_BASE_URL}/artikel/lihat_artikel/${article.id_artikel}/${article.slug || formatUrlTitle(article.judul)}`
     },
     "articleSection": article.nama_kategori || "Kesehatan",
     "wordCount": article.isi_artikel ? article.isi_artikel.replace(/<[^>]*>/g, '').split(' ').length : null,
@@ -103,7 +104,7 @@ export const generateProductSchema = (product) => {
   return {
     "@context": "https://schema.org",
     "@type": "Product",
-    "@id": `${METADATA_BASE_URL}/produk_kami/tampil_produk/${product.id_produk}/${product.slug || product.nama_produk.replace(/\s+/g, '-').toLowerCase()}`,
+    "@id": `${METADATA_BASE_URL}/produk_kami/tampil_produk/${product.id_produk}/${product.slug || formatUrlTitle(product.nama_produk)}`,
     "name": product.nama_produk,
     "description": product.deskripsi ? product.deskripsi.replace(/<[^>]*>/g, '').substring(0, 500) : product.nama_produk,
     "image": {
@@ -125,7 +126,7 @@ export const generateProductSchema = (product) => {
     "sku": product.sku || product.id_produk,
     "offers": {
       "@type": "Offer",
-      "url": `${METADATA_BASE_URL}/produk_kami/tampil_produk/${product.id_produk}/${product.slug || product.nama_produk.replace(/\s+/g, '-').toLowerCase()}`,
+      "url": `${METADATA_BASE_URL}/produk_kami/tampil_produk/${product.id_produk}/${product.slug || formatUrlTitle(product.nama_produk)}`,
       "priceCurrency": "IDR",
       "price": product.harga || "85000",
       "availability": "https://schema.org/InStock",

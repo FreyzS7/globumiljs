@@ -68,6 +68,10 @@ const nextConfig = {
         source: '/produk_kami/produk_kami2',
         destination: '/produk_kami',
         permanent: true,
+      },{
+        source: '/artikel/lihat_artikel/329/5-manfaat-vitamin-d-untuk-kesuburan-dan-kehamilan-dengan-globumil-globumil',
+        destination: '/artikel/lihat_artikel/329/5-manfaat-vitamin-d-untuk-kesuburan-kehamilan-dengan-globumil-globumil',
+        permanent: true,
       },
       
     ];

@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import ArticlesServer from '@/components/articles/ArticlesServer';
 import { METADATA_BASE_URL } from '@/utils/constant';
+import formatUrlTitle from '@/utils/String';
 import Script from 'next/script';
 
 async function readLocalJson(filename) {
@@ -28,7 +29,7 @@ export default async function ArticlesPage() {
     "hasPart": paginatedArticles.map(article => ({
       "@type": "Article",
       "headline": article.judul,
-      "url": `${METADATA_BASE_URL}/artikel/${article.id_artikel}/${article.judul.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`,
+      "url": `${METADATA_BASE_URL}/artikel/${article.id_artikel}/${formatUrlTitle(article.judul)}`,
       "datePublished": article.tanggal_input,
       "dateModified": article.tanggal_update || article.tanggal_input,
       "author": {

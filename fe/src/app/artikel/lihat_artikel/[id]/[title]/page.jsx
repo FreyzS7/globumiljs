@@ -6,6 +6,7 @@ import { METADATA_BASE_URL, UPLOADS_URL } from '@/utils/constant';
 import { ArtikelGlobumilSection } from '@/custompages/Home/ArtikelGlobumilSection';
 import { getAllArticles, getArticleById } from '@/lib/articles';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/schema';
+import formatUrlTitle from '@/utils/String';
 import Script from 'next/script';
 
 import fs from 'fs';
@@ -25,9 +26,7 @@ export async function generateStaticParams() {
 
     return articles.data.map(article => ({
       id: article.id_artikel.toString(),
-      title: article.judul.toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, ''),
+      title: formatUrlTitle(article.judul),
     }));
   } catch (error) {
     console.error('Error generating static params for articles:', error);

@@ -1,4 +1,5 @@
 // Utility functions for search functionality
+import formatUrlTitle from './String';
 
 export const highlightSearchTerm = (text, searchTerm) => {
   if (!searchTerm || !text) return text;
@@ -31,8 +32,8 @@ export const getSearchResultUrl = (item, type) => {
   if (type === 'product' || item.type === 'product') {
     return `/produk_kami/tampil_produk/${item.id_produk || item.id}`;
   } else if (type === 'article' || item.type === 'article') {
-    const title = (item.judul || item.title).toLowerCase().replace(/\s+/g, '-');
-    return `/artikel_kami/lihat_artikel/${item.id_artikel || item.id}/${encodeURIComponent(title)}`;
+    const title = formatUrlTitle(item.judul || item.title);
+    return `/artikel_kami/lihat_artikel/${item.id_artikel || item.id}/${title}`;
   }
   return '#';
 };
