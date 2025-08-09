@@ -9,6 +9,70 @@ import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import formatUrlTitle from '@/utils/String';
 import Script from 'next/script';
 
+// Clean HTML tags from text
+function stripHtmlTags(html) {
+  return html.replace(/<[^>]*>/g, '').trim();
+}
+
+// Generate clean meta description from article content
+function generateCleanDescription(article) {
+  const cleanContent = stripHtmlTags(article.kata_awal || '');
+  
+  // Limit to 155-160 characters for optimal SEO
+  if (cleanContent.length <= 160) {
+    return cleanContent;
+  }
+  
+  // Truncate at word boundary near 155 characters
+  const truncated = cleanContent.substring(0, 155);
+  const lastSpace = truncated.lastIndexOf(' ');
+  
+  return lastSpace > 120 ? truncated.substring(0, lastSpace) + '...' : truncated + '...';
+}
+
+// Generate dynamic keywords based on article content
+function generateDynamicKeywords(article) {
+  const baseKeywords = ['Globumil'];
+  const categoryKeywords = article.nama_kategori ? [article.nama_kategori.toLowerCase()] : [];
+  
+  // Extract meaningful words from title (remove common words)
+  const stopWords = ['dan', 'atau', 'untuk', 'pada', 'di', 'saat', 'yang', 'ini', 'cara', 'tips', 'dengan'];
+  const titleWords = article.judul
+    .toLowerCase()
+    .replace(/[^\w\s]/g, '') // Remove punctuation
+    .split(' ')
+    .filter(word => word.length > 2 && !stopWords.includes(word))
+    .slice(0, 3); // Take first 3 meaningful words
+  
+  // Extract keywords from content (common health terms)
+  const contentKeywords = [];
+  const healthTerms = [
+    'kehamilan', 'ibu hamil', 'janin', 'trimester', 'anemia', 'kalsium', 'zat besi',
+    'asam folat', 'vitamin', 'nutrisi', 'suplemen', 'menyusui', 'bayi', 'kesehatan',
+    'gizi', 'prenatal', 'DHA', 'morning sickness', 'preeklamsia'
+  ];
+  
+  const content = (article.kata_awal + ' ' + article.isi_artikel).toLowerCase();
+  healthTerms.forEach(term => {
+    if (content.includes(term) && !baseKeywords.includes(term)) {
+      contentKeywords.push(term);
+    }
+  });
+  
+  // Combine and remove duplicates
+  const allKeywords = [
+    ...titleWords,
+    ...categoryKeywords,
+    ...contentKeywords.slice(0, 4),
+    ...baseKeywords
+  ];
+  
+  // Remove duplicates and limit to 8 keywords
+  const uniqueKeywords = [...new Set(allKeywords)].slice(0, 8);
+  
+  return uniqueKeywords.join(', ');
+}
+
 import fs from 'fs';
 import path from 'path';
 
@@ -52,8 +116,8 @@ export async function generateMetadata({ params }) {
 
       return {
         title: `${article.judul}`,
-        description: article.kata_awal || 'Baca artikel kesehatan dan tips untuk ibu hamil dan menyusui dari Globumil.',
-        keywords: `${article.judul}, artikel kesehatan, ibu hamil, kehamilan, menyusui, Globumil, tips kesehatan`,
+        description: generateCleanDescription(article),
+        keywords: generateDynamicKeywords(article),
         authors: [{ name: article.admin || 'Globumil Team' }],
         creator: 'Globumil',
         publisher: 'Globumil',
@@ -67,7 +131,7 @@ export async function generateMetadata({ params }) {
         },
         openGraph: {
           title: `${article.judul} - Globumil`,
-          description: article.kata_awal || 'Baca artikel kesehatan dan tips untuk ibu hamil dan menyusui dari Globumil.',
+          description: generateCleanDescription(article),
           url: fullUrl,
           siteName: 'Globumil',
           type: 'article',
