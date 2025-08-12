@@ -1,0 +1,11 @@
+RewriteEngine On
+
+RewriteCond expr "tolower(%{REQUEST_URI}) =~ /(.*)/"
+RewriteRule [A-Z] %1 [R=301,L]
+# Redirect any URL containing index.php to clean URL without it
+RewriteCond %{REQUEST_URI} ^/index.php$
+RewriteRule ^(.*)$ / [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]

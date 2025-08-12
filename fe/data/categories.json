@@ -1,0 +1,30 @@
+{
+  "status": true,
+  "message": "Categories retrieved successfully",
+  "data": [
+    {
+      "id_kategoriartikel": "1",
+      "nama_kategori": "Kehamilan"
+    },
+    {
+      "id_kategoriartikel": "2",
+      "nama_kategori": "Menyusui"
+    },
+    {
+      "id_kategoriartikel": "3",
+      "nama_kategori": "Parenting"
+    },
+    {
+      "id_kategoriartikel": "5",
+      "nama_kategori": "Mom's Life"
+    },
+    {
+      "id_kategoriartikel": "6",
+      "nama_kategori": "Promil"
+    },
+    {
+      "id_kategoriartikel": "7",
+      "nama_kategori": "Skincare"
+    }
+  ]
+}
