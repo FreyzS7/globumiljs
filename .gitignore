@@ -32,6 +32,7 @@ fe_temp/node_modules/*
 fe_temp/.next/*
 fe_temp/.env.local
 fe_temp/*
+design.png
 composer.lock
 tests/mocks/database/ci_test.sqlite
 globumil2.zip
