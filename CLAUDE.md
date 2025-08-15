@@ -20,6 +20,7 @@ npm install                      # Install dependencies
 npm run dev                      # Start development server (http://localhost:3000)
 npm run build                    # Build for production
 npm run build:static             # Build static site for deployment
+npm run build:clean              # Clean build (removes .next and node_modules cache first)
 npm start                        # Start production server (standard)
 node --max-old-space-size=256 server-simple.js  # Start with memory limit for shared hosting
 npm run lint                     # Run ESLint
@@ -27,9 +28,9 @@ npm run lint                     # Run ESLint
 ```
 
 ### Backend (CodeIgniter)
-- Served via XAMPP at `http://localhost/channamix2/`
+- Served via XAMPP at `http://localhost/globumil2/`
 - No build process required (PHP interpreted)
-- API endpoints accessible at `http://localhost/channamix2/api/`
+- API endpoints accessible at `http://localhost/globumil2/api/`
 
 ### Testing
 ```bash
@@ -38,6 +39,7 @@ composer test:coverage    # Run PHPUnit tests with coverage
 
 # Frontend - No automated tests configured
 # Manual testing via browser at http://localhost:3000
+# API endpoint testing via: node test-api-endpoints.js (from fe/ directory)
 ```
 
 ### Deployment

@@ -41,11 +41,17 @@ const KomitmenCarousel = ({ komitmenItems }) => {
       <div className="sm:hidden w-full flex flex-col items-center">
         <div className="w-full max-w-sm overflow-hidden" ref={emblaRef}>
           <div className="flex">
-            {komitmenItems.map((item, idx) => (
-              <div key={idx} className="flex-[0_0_100%] min-w-0 flex justify-center px-4">
-                <div className="bg-white rounded-tl-[6rem] rounded-br-[6rem] rounded-tr-[2rem] flex flex-col items-center justify-center p-3 shadow-md w-full max-w-64 h-56 hover:scale-105 transition-all duration-300">
-                  <img src={item.icon} alt={item.alt} className="w-16 h-16 mb-4" />
-                  <p className="text-center font-semibold text-black whitespace-pre-line text-sm">{item.title}</p>
+            {Array.from({ length: Math.ceil(komitmenItems.length / 2) }, (_, slideIndex) => (
+              <div key={slideIndex} className="flex-[0_0_100%] min-w-0 flex justify-center px-4">
+                <div className="grid grid-cols-2 gap-3 w-full">
+                  {komitmenItems.slice(slideIndex * 2, slideIndex * 2 + 2).map((item, itemIndex) => (
+                    <div key={itemIndex} className="flex flex-col items-center justify-center">
+                      <div className="bg-white rounded-tl-[4rem] rounded-br-[4rem] rounded-tr-[1.5rem] flex flex-col items-center justify-center p-3 shadow-md w-full h-39 md:h-48 hover:scale-105 transition-all duration-300">
+                        <img src={item.icon} alt={item.alt} className="w-12 h-12 mb-3" />
+                        <p className="text-center font-semibold text-black whitespace-pre-line text-sm">{item.title}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
@@ -53,8 +59,8 @@ const KomitmenCarousel = ({ komitmenItems }) => {
         </div>
         
         {/* Mobile Carousel Dots */}
-        <div className="flex justify-center items-center mt-6 space-x-2">
-          {scrollSnaps.map((_, index) => (
+        <div className="flex justify-center items-center mt-6 space-x-2 md:scale-100 scale-75">
+          {Array.from({ length: Math.ceil(komitmenItems.length / 2) }, (_, index) => (
             <button
               key={index}
               type="button"

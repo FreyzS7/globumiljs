@@ -32,8 +32,8 @@ export default function RootLayout({children}) {
           type="image/webp"
           fetchPriority="high"
         />
-          <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=G-TPE6Q7S5HX`}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=G-MDESSVBQ2D`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -41,11 +41,12 @@ export default function RootLayout({children}) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date()); 
-            gtag('config', 'G-TPE6Q7S5HX', {
+            gtag('config', 'G-MDESSVBQ2D', {
               page_path: window.location.pathname,
             });
           `}
         </Script>
+        <meta name="google-site-verification" content="q94tAtrdzWyu1zk5MhciIR58PiP5oT02T4sG5Jam5OM" />
       </head>
       <body className='bg-[#FFF6F6]'>
       

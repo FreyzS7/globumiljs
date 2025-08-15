@@ -5,6 +5,7 @@ import Image from "next/image";
 import { METADATA_BASE_URL } from '@/utils/constant';
 import { generateBreadcrumbSchema } from '@/lib/schema';
 import KomitmenCarousel from '@/components/KomitmenCarousel';
+import PartnerCarousel from '@/components/PartnerCarousel';
 
 
 const komitmenItems = [
@@ -159,10 +160,15 @@ export default function About() {
       </div>
       <div className="relative w-full md:h-[100vh] bg-[#FEF4EA] overflow-hidden flex flex-col justify-start items-center">
         {/* Komitmen Kami Section */}
-        <div className="w-full flex flex-col items-center justify-center bg-[#FEF4EA] py-8 sm:py-12">
+        <div className="w-full flex flex-col items-center justify-center bg-[#FEF4EA] pb-8 sm:py-12">
           <h2 className="text-2xl sm:text-3xl font-bold text-[#E94F9A] mb-6 sm:mb-10 text-center px-4">Komitmen Kami</h2>
           <KomitmenCarousel komitmenItems={komitmenItems} />
         </div>
+      </div>
+
+      {/* Partner Section */}
+      <div className="w-full bg-white py-8 sm:py-12">
+        <PartnerCarousel />
       </div>
     </div>
     </div>
