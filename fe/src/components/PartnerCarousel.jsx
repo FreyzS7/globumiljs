@@ -159,8 +159,8 @@ const PartnerCarousel = () => {
       </section>
 
       {/* Doctors Section */}
-      <section className="flex flex-col items-center justify-center w-full mx-auto mb-16 overflow-x-hidden md:scale-80">
-        <div className="flex flex-col items-center justify-center w-full h-full md:h-[80%] rounded-[1.5rem] md:rounded-[3rem] mt-2 md:mt-1 pb-8">
+      <section className="flex flex-col items-center justify-center w-full mx-auto overflow-x-hidden md:scale-80">
+        <div className="flex flex-col items-center justify-center w-full h-full md:h-[80%] rounded-[1.5rem] md:rounded-[3rem] mt-2 md:mt-1">
            
 
           {/* Mobile Carousel View */}
@@ -178,7 +178,7 @@ const PartnerCarousel = () => {
                               alt={dokter.name}
                               width={300}
                               height={100}
-                              className="w-[200px] md:h-[100px] object-contain rounded-lg mb-4 cursor-pointer bg-white"
+                              className="w-[200px] md:h-[100px] object-contain rounded-lg mb-4 cursor-pointer"
                               onClick={() => openModal(`/images/About/PartnerKami/Dokter/${dokter.image}`)}
                             />
                           </div>
@@ -213,7 +213,7 @@ const PartnerCarousel = () => {
             <div className="grid grid-cols-3 justify-items-center mb-6">
               {dokters.map((dokter, index) => (
                 <div key={index} className="relative flex flex-col items-center justify-center md:h-[300px] p-1">
-                  <div className="flex flex-col items-center justify-center w-full h-full rounded-xl cursor-pointer bg-white">
+                  <div className="flex flex-col items-center justify-center w-full h-full rounded-xl cursor-pointer">
                     <Image
                       src={`/images/About/PartnerKami/Dokter/${dokter.image}`}
                       alt={dokter.name}

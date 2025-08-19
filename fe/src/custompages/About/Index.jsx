@@ -12,27 +12,32 @@ const komitmenItems = [
   {
     icon: "/images/About/Icons/Janin.png",
     alt: "Membantu Tumbuh Kembang Janin",
-    title: "Membantu Tumbuh\nKembang Janin"
+    title: "Membantu Tumbuh\nKembang Janin",
+     size:"w-16 h-16 mb-4"
   },
   {
     icon: "/images/About/Icons/Kimia.png",
     alt: "Bebas Zat Kimia Berbahaya",
-    title: "Bebas\nZat Kimia Berbahaya"
+    title: "Bebas\nZat Kimia Berbahaya",
+     size:"w-16 h-16 mb-4"
   },
   {
     icon: "/images/About/Icons/Teruji.png",
     alt: "Teruji di Laboratorium",
-    title: "Teruji\ndi Laboratorium"
+    title: "Teruji\ndi Laboratorium",
+     size:"w-16 h-16 mb-4"
   },
   {
     icon: "/images/About/Icons/Halal.png",
     alt: "Halal dan Terdaftar BPOM",
-    title: "Halal dan\nTerdaftar BPOM"
+    title: "Halal dan\nTerdaftar BPOM",
+   size:"w-28 h-25 mb-0"
   },
   {
     icon: "/images/About/Icons/Formulasi.png",
     alt: "Formulasi Bahan Alami Terpilih",
-    title: "Formulasi Bahan\nAlami Terpilih"
+    title: "Formulasi Bahan\nAlami Terpilih",
+     size:"w-16 h-16 mb-4"
   }
 ];
 export default function About() {
@@ -105,24 +110,24 @@ export default function About() {
         <svg
           className="absolute bottom-0 left-0 w-full"
           viewBox="0 0 1440 200"
-          fill="none"
+          fill="FFF6F6"
           xmlns="http://www.w3.org/2000/svg"
           style={{ height: '120px' }}
           preserveAspectRatio="none"
         >
           <path
             d="M0,0 Q720,200 1440,0 L1440,200 L0,200 Z"
-            fill="#FFFFFF"
+            fill="#FFF6F6"
           />
         </svg>
       </div>
        
-      <div className="relative w-full min-h-[110vh] sm:min-h-[95vh] md:h-[100vh] bg-white overflow-hidden flex flex-col justify-start items-center">
-        <div className="flex flex-col gap-4 sm:gap-6 md:gap-0 md:flex-row items-center justify-between w-full min-h-[80vh] sm:min-h-[70vh] md:h-[70vh] px-4 sm:px-8 md:px-24 py-6 sm:py-8 md:pt-0 pb-20 sm:pb-16 md:pb-0">
+      <div className="bg-[#FFF6F6] relative w-full min-h-[110vh] sm:min-h-[95vh] md:h-[100vh] overflow-hidden flex flex-col justify-start items-center">
+        <div className="bg-[#FFF6F6] flex flex-col gap-4 sm:gap-6 md:gap-0 md:flex-row items-center justify-between w-full min-h-[80vh] sm:min-h-[70vh] md:h-[70vh] px-4 sm:px-8 md:px-24 py-6 sm:py-8 md:pt-0 pb-20 sm:pb-16 md:pb-0">
           {/* Left: Text */}
           <div className="md:w-[50%] text-center flex flex-col items-center justify-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#E94F9A] mb-3 sm:mb-4 text-center w-full">Bahan - Bahan Kami</h2>
-            <p className="text-xs sm:text-sm md:text-lg text-black leading-relaxed text-center md:text-left w-full">
+            <p className="text-xs text-left sm:text-sm md:text-lg text-black leading-relaxed w-full mb-10">
             1. Globumil mengandung asam folat untuk mencegah kecacatan pada janin <br></br>
             2. DHA untuk membantu perkembangan otak janin sehingga lebih optimal <br></br>
             3. FE/Zat besi berfungsi untuk mencegah anemia selama kehamilan dan mencegah terjadinya pendarahan setelah melahirkan <br></br>
@@ -147,7 +152,7 @@ export default function About() {
         <svg
           className="absolute bottom-0 left-0 w-full"
           viewBox="0 0 1440 200"
-          fill="none"
+          fill="#FFF6F6"
           xmlns="http://www.w3.org/2000/svg"
           style={{ height: '120px' }}
           preserveAspectRatio="none"
@@ -158,7 +163,7 @@ export default function About() {
           />
         </svg>
       </div>
-      <div className="relative w-full md:h-[100vh] bg-[#FEF4EA] overflow-hidden flex flex-col justify-start items-center">
+      <div className="relative w-full md:h-[100vh] overflow-hidden flex flex-col justify-start items-center">
         {/* Komitmen Kami Section */}
         <div className="w-full flex flex-col items-center justify-center bg-[#FEF4EA] pb-8 sm:py-12">
           <h2 className="text-2xl sm:text-3xl font-bold text-[#E94F9A] mb-6 sm:mb-10 text-center px-4">Komitmen Kami</h2>
@@ -167,7 +172,7 @@ export default function About() {
       </div>
 
       {/* Partner Section */}
-      <div className="w-full bg-white py-8 sm:py-12">
+      <div className="w-full pt-8">
         <PartnerCarousel />
       </div>
     </div>

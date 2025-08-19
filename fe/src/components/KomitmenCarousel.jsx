@@ -42,12 +42,12 @@ const KomitmenCarousel = ({ komitmenItems }) => {
         <div className="w-full max-w-sm overflow-hidden" ref={emblaRef}>
           <div className="flex">
             {Array.from({ length: Math.ceil(komitmenItems.length / 2) }, (_, slideIndex) => (
-              <div key={slideIndex} className="flex-[0_0_100%] min-w-0 flex justify-center px-4">
+              <div key={slideIndex} className="flex-[0_0_100%] min-w-0 flex justify-center p-4">
                 <div className="grid grid-cols-2 gap-3 w-full">
                   {komitmenItems.slice(slideIndex * 2, slideIndex * 2 + 2).map((item, itemIndex) => (
                     <div key={itemIndex} className="flex flex-col items-center justify-center">
                       <div className="bg-white rounded-tl-[4rem] rounded-br-[4rem] rounded-tr-[1.5rem] flex flex-col items-center justify-center p-3 shadow-md w-full h-39 md:h-48 hover:scale-105 transition-all duration-300">
-                        <img src={item.icon} alt={item.alt} className="w-12 h-12 mb-3" />
+                        <img src={item.icon} alt={item.alt} className={`${item.size}`} />
                         <p className="text-center font-semibold text-black whitespace-pre-line text-sm">{item.title}</p>
                       </div>
                     </div>
@@ -77,12 +77,12 @@ const KomitmenCarousel = ({ komitmenItems }) => {
       </div>
 
       {/* Desktop/Tablet Grid View - Static for SEO */}
-      <div className="hidden sm:flex flex-col items-center w-full max-w-4xl px-4">
+      <div className="hidden sm:flex flex-col items-center w-full max-w-4xl p-4">
         {/* Top row: 2 cards */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 mb-4 sm:mb-8 md:w-[60%] w-full">
           {komitmenItems.slice(0, 2).map((item, idx) => (
             <div key={idx} className="bg-white rounded-tl-[6rem] rounded-br-[6rem] rounded-tr-[2rem] flex flex-col items-center justify-center p-3 shadow-md w-full max-w-64 mx-auto sm:w-64 h-56 hover:scale-105 transition-all duration-300">
-              <img src={item.icon} alt={item.alt} className="w-16 h-16 mb-4" />
+              <img src={item.icon} alt={item.alt} className={`${item.size}`} />
               <p className="text-center font-semibold text-black whitespace-pre-line text-sm sm:text-base">{item.title}</p>
             </div>
           ))}
@@ -91,7 +91,7 @@ const KomitmenCarousel = ({ komitmenItems }) => {
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 w-full">
           {komitmenItems.slice(2, 5).map((item, idx) => (
             <div key={idx + 2} className="bg-white rounded-tl-[6rem] rounded-br-[6rem] rounded-tr-[2rem] flex flex-col items-center justify-center p-3 shadow-md w-full max-w-64 mx-auto sm:w-64 h-56 hover:scale-105 transition-all duration-300">
-              <img src={item.icon} alt={item.alt} className="w-16 h-16 mb-4" />
+              <img src={item.icon} alt={item.alt} className={`${item.size}`} />
               <p className="text-center font-semibold text-black whitespace-pre-line text-sm sm:text-base">{item.title}</p>
             </div>
           ))}
